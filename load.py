@@ -37,6 +37,7 @@ def load_dataset(path, conn):
         conn.commit()
         for station_id in stations:
             cur.execute(sql.SQL("INSERT INTO station_lines(line_id, station_id) VALUES (%s, %s);"), [line_id, station_id])
+            conn.commit()
     
 conn = psycopg2.connect("dbname=tubedb user=james password=london")
 create_tables(conn)
